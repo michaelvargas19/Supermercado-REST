@@ -1,3 +1,16 @@
-<p>
-  login works!
-</p>
+<div>
+  <form (ngSubmit)="doLogin()">
+  <input type="text" [(ngModel)]="user" name="user">
+  <input type="text" [(ngModel)]="password" name="pass">
+  <button type="submit" id="login">Login</button>
+  </form>
+
+  <button (click)="getTestData()">Get Test Data</button>
+  <button (click)="getRestrictedData()">Get Restricted Data</button>
+  <button (click)="logout()">logout</button>
+  <pre>
+    {{message}}
+  </pre>
+
+
+</div>
