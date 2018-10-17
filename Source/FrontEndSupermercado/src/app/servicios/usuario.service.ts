@@ -1,11 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Usuario } from '../modelo/usuario';
 
 
 @Injectable()
 export class UsuarioService {
 
   constructor(private http: HttpClient) { }
+
+  addUsuario(usuario: Usuario){
+    
+    return this.http.post('http://localhost:8080/usuario/add', usuario)
+      .subscribe(
+        res => {
+          return true;
+        },
+        err => {
+          return false;
+        }
+      );
+    /*
+    this.http.post('http://localhost:8080/usuario/add',null,{
+      headers: headers,
+      withCredentials: true
+    });*/
+}
 
   login(username: string, password: string) {
     const headers = new HttpHeaders();

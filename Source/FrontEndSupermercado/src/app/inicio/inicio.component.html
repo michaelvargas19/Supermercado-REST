@@ -1,5 +1,22 @@
 <h1>Supermercado-REST</h1>
-<a [routerLink]="['inicio']"
-   routerLinkActive='router-link-active'>Ver más</a>
 
+<app-login *ngIf ="registro"></app-login>
+
+<button (click) ="registrar()" [routerLink]="['registro']" routerLinkActive='router-link-active' >Registrarse</button>
+
+<div class="menu">
+    <ul class="menu">
+        <li><a [routerLink]="['productos']" routerLinkActive='router-link-active' >Productos</a></li>
+        <li><a [routerLink]="['inventario']" routerLinkActive='router-link-active' >Inventario</a></li>
+        <li><a [routerLink]="['venta']" routerLinkActive='router-link-active'>Ventas</a></li>
+        <li><a [routerLink]="['facturas']" routerLinkActive='router-link-active' >Facturas</a></li>
+    </ul>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 <router-outlet></router-outlet>

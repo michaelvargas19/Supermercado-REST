@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   message: any;
 
+
+
   constructor(private restClient: UsuarioService) { }
 
   ngOnInit() {
@@ -64,5 +66,7 @@ export class LoginComponent implements OnInit {
       this.message = JSON.stringify(error);
     });
   }
+
+  
 
 }

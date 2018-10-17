@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
+  registro = true;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  registrar(){
+    this.registro = !this.registro;
   }
 
 }
