@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.javeriana.myapp.server.myappserver.model.Detalle;
 import co.edu.javeriana.myapp.server.myappserver.model.DetalleRepository;
 import co.edu.javeriana.myapp.server.myappserver.model.Producto;
+import co.edu.javeriana.myapp.server.myappserver.model.ProductoRepository;
 import co.edu.javeriana.myapp.server.myappserver.model.Venta;
 import co.edu.javeriana.myapp.server.myappserver.model.VentaRepository;
 
@@ -26,6 +27,9 @@ public class VentaService {
 	
 	@Autowired
 	private DetalleRepository repositoryDetalle;
+	
+	@Autowired
+	private ProductoRepository repositoryProducto;
 
 	@RequestMapping("")
 	Iterable<Venta> findAll() {
@@ -43,8 +47,8 @@ public class VentaService {
 		if(v.getDetalles() != null) {
 			for (Detalle d : v.getDetalles()) {
 				d.setVenta(v);
+				//d.setProducto( (repositoryProducto.findById(d.getProducto().getId())).get() );
 				repositoryDetalle.save(d);
-				System.out.println("++++++++++++++++++++++++++++++++"+v.getDetalles().size());
 			}
 		}
 		return auxVenta;

@@ -20,6 +20,9 @@ import { VentaService } from './servicios/venta.service';
 import { ProductoService } from './servicios/producto.service';
 import { AddProductoComponent } from './productos/add-producto/add-producto.component';
 import { AddVentaComponent } from './venta/add-venta/add-venta.component';
+import { ListVentasComponent } from './venta/list-ventas/list-ventas.component';
+import { EditVentaComponent } from './venta/edit-venta/edit-venta.component';
+import { ViewVentaComponent } from './venta/view-venta/view-venta.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { AddVentaComponent } from './venta/add-venta/add-venta.component';
     ProductosComponent,
     RegistroComponent,
     AddProductoComponent,
-    AddVentaComponent
+    AddVentaComponent,
+    ListVentasComponent,
+    EditVentaComponent,
+    ViewVentaComponent
 
   ],
   imports: [

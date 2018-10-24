@@ -27,13 +27,13 @@ export class AddVentaComponent implements OnInit {
     this.restClient2.findZonaById(1).subscribe(
       res => {
         det.producto=res;
-        
       },
       err => {
         alert("error");
       }
     )
     ;
+    this.venta.detalles.push(det);
     this.venta.detalles.push(new Detalle());
     this.venta.detalles.push(new Detalle());
     
@@ -47,4 +47,4 @@ export class AddVentaComponent implements OnInit {
    
   }
 
-}
+} 

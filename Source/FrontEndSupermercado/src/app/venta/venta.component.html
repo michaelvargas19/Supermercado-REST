@@ -1,1 +1,14 @@
-<app-add-venta></app-add-venta>
+<h1>Ventas</h1>
+
+<form (ngSubmit)="agregarProducto()">
+    
+    <button type="button" (click)="agregarProducto()" id="agregarProducto">Agregar Venta</button>
+    <button type="button" (click)="listaProductos()" id="listaProductos">Listar Ventas</button>
+    
+    
+    <app-add-venta *ngIf="showAdd"  ></app-add-venta>
+    <app-edit-venta *ngIf="showEdit"></app-edit-venta>
+    <app-list-ventas  (editarVenta)="editarVenta($event)"  *ngIf="showList"></app-list-ventas>
+    <app-view-venta *ngIf="showView"></app-view-venta>    
+  
+</form>
