@@ -14,7 +14,7 @@ export class ListVentasComponent implements OnInit {
   ngOnInit() {
   }
 
-  emitir(){
+  editar(){
     this.editarVenta.emit(true);
   }
 

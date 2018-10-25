@@ -13,12 +13,14 @@ import { Producto } from '../../modelo/producto';
 export class AddVentaComponent implements OnInit {
 
   venta :Venta;
+  showSelecter = true;
   
 
   constructor(private restClient: VentaService, private restClient2: ProductoService) { }
 
   ngOnInit() {
     this.venta = new Venta();
+    this.showSelecter = true;
   }
 
   addVenta(){
@@ -45,6 +47,11 @@ export class AddVentaComponent implements OnInit {
       alert("Ha ocurrido un error");
     }
    
+  }
+
+  onProductSelected(event){
+    alert("llego el producto");
+    this.showSelecter = false;
   }
 
 } 

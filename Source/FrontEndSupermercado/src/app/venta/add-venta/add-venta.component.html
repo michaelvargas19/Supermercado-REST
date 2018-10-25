@@ -4,4 +4,7 @@
     
   <button type="submit" id="addVenta">Agregar Venta</button>
 
+
+  <app-seleccion-productos (onProductSelected)="onProductSelected($event)" *ngIf="showSelecter" ></app-seleccion-productos>
+
 </form>
