@@ -25,30 +25,32 @@ export class VentaComponent implements OnInit {
     this.showView = false;
   }
 
-
-  
-  editarVenta(event){
-
-    //this.evento.escenario=event;
-    //alert(this.evento.escenario.nombre+ "-->llego el escenario");
-
-    this.showAdd = false;
-    this.showEdit = true;
-    this.showList = false;
-    this.showView = false;
-  }
-
-  listaProductos(){
+  listaVentas(event){
     this.showAdd = false;
     this.showEdit = false;
     this.showList = true;
     this.showView = false;
   }
 
-  verProductos(){
+  verVenta(){
     this.showAdd = false;
     this.showEdit = false;
     this.showList = false;
     this.showView = true;
   }
+
+  editarVenta(event){
+    this.showAdd = false;
+    this.showEdit = true;
+    this.showList = false;
+    this.showView = false;
+  }
+  
+  borrarVenta(event){
+    this.showAdd = false;
+    this.showEdit = false;
+    this.showList = true;
+    this.showView = false;
+  }
+
 }

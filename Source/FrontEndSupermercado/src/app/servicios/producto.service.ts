@@ -28,6 +28,12 @@ export class ProductoService {
   {withCredentials: true});
 }
 
+//-----------------------------------------
+findAll(): Observable<Producto[]> {
+  return this.http.get<Producto[]>('http://localhost:8080/producto');
+}
+//-----------------------------------------
+
 }
 
 

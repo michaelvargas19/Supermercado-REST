@@ -3,12 +3,15 @@
 <form (ngSubmit)="agregarProducto()">
     
     <button type="button" (click)="agregarProducto()" id="agregarProducto">Agregar Venta</button>
-    <button type="button" (click)="listaProductos()" id="listaProductos">Listar Ventas</button>
+    <button type="button" (click)="listaVentas()" id="listaVentas">Listar Ventas</button>
     
     
-    <app-add-venta *ngIf="showAdd"  ></app-add-venta>
+    <app-add-venta (listaVentas)="listaVentas($event)" *ngIf="showAdd"  ></app-add-venta>
     <app-edit-venta *ngIf="showEdit"></app-edit-venta>
-    <app-list-ventas  (editarVenta)="editarVenta($event)"  *ngIf="showList"></app-list-ventas>
+    <app-list-ventas  (verVenta)="verVenta($event)"
+                      (editarVenta)="editarVenta($event)"
+                      (borrarVenta)="borrarVenta($event)"
+    *ngIf="showList"></app-list-ventas>
     <app-view-venta *ngIf="showView"></app-view-venta>    
   
 </form>
