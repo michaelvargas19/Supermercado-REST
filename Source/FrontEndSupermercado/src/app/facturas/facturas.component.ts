@@ -10,6 +10,9 @@ export class FacturasComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
+
+  
 
 }

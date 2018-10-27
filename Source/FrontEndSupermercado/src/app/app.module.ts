@@ -24,6 +24,11 @@ import { ListVentasComponent } from './venta/list-ventas/list-ventas.component';
 import { EditVentaComponent } from './venta/edit-venta/edit-venta.component';
 import { ViewVentaComponent } from './venta/view-venta/view-venta.component';
 
+import * as jspdf from 'jspdf'; 
+ 
+
+import { ViewFacturaComponent } from './facturas/view-factura/view-factura.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,8 @@ import { ViewVentaComponent } from './venta/view-venta/view-venta.component';
     AddVentaComponent,
     ListVentasComponent,
     EditVentaComponent,
-    ViewVentaComponent
+    ViewVentaComponent,
+    ViewFacturaComponent
 
   ],
   imports: [
@@ -48,6 +54,7 @@ import { ViewVentaComponent } from './venta/view-venta/view-venta.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+    
   ],
   providers: [ProductoService, UsuarioService, VentaService],
   bootstrap: [AppComponent]

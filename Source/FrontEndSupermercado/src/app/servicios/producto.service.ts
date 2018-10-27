@@ -22,11 +22,11 @@ export class ProductoService {
       );
   }
 
-  findZonaById (id: number): Observable <Producto>{
+  findProductById (id: number): Observable <Producto>{
     
     return this.http.get<Producto>('http://localhost:8080/producto/'+id,
-  {withCredentials: true});
-}
+    {withCredentials: true});
+  } 
 
 //-----------------------------------------
 findAll(): Observable<Producto[]> {

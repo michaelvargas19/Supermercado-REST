@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Venta } from '../../modelo/venta';
+import { VentaService } from '../../servicios/venta.service';
 
 @Component({
   selector: 'app-list-ventas',
@@ -7,27 +9,57 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ListVentasComponent implements OnInit {
 
-  @Output() verVenta = new EventEmitter<Boolean>();
-  @Output() editarVenta = new EventEmitter<Boolean>();
-  @Output() borrarVenta = new EventEmitter<Boolean>();
+  @Output() verVenta = new EventEmitter<Venta>();
+  @Output() editarVenta = new EventEmitter<Venta>();
+  @Output() borrarVenta = new EventEmitter<Venta>();
 
-  constructor() { }
+  ventas : Venta[]=[];
+
+  constructor(private restClient: VentaService) { }
 
   ngOnInit() {
+    this.refresh();
   }
 
-  ver(){
-    this.verVenta.emit(true);
+  ver(venta){
+    this.verVenta.emit(venta);
   }
 
-  editar(){
-    this.editarVenta.emit(true);
+  editar(venta){
+    this.editarVenta.emit(venta);
   }
 
-  borrar(){
-    this.borrarVenta.emit(true);
+  borrar(venta){
+    this.borrarVenta.emit(venta);
+    this.refresh();
   }
 
-  
+  refresh(){
+    this.ventas = [];
+    this.restClient.findAll().subscribe(datos => {
+      this.ventas = datos; 
+      },
+      error => {     alert("error");
+    });
+  }
+
+  getFecha(date){
+    
+    var today = new Date(date);
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    
+    var yyyy = today.getFullYear();
+    /*
+    if(dd<10){
+        dd='0'+dd;
+    } 
+    if(mm<10){
+        mm='0'+mm;
+    } */
+    var fecha = dd+'/'+mm+'/'+yyyy;
+
+    return fecha;
+  }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VentaService } from '../servicios/venta.service';
+import { Venta } from '../modelo/venta';
 
 @Component({
   selector: 'app-venta',
@@ -8,14 +9,18 @@ import { VentaService } from '../servicios/venta.service';
 })
 export class VentaComponent implements OnInit {
 
-  showAdd= false;
-  showEdit= false;
-  showList= false;
-  showView= false;
+  showAdd = false;
+  showEdit = false;
+  showList = true;
+  showView = false;
+  showSelections = false;
+
+  venta: Venta;
 
   constructor(private restClient: VentaService) { }
 
   ngOnInit() {
+    this.venta = new Venta();
   }
 
   agregarProducto(){
@@ -32,7 +37,8 @@ export class VentaComponent implements OnInit {
     this.showView = false;
   }
 
-  verVenta(){
+  verVenta(event){
+    this.venta = event;
     this.showAdd = false;
     this.showEdit = false;
     this.showList = false;
@@ -40,6 +46,7 @@ export class VentaComponent implements OnInit {
   }
 
   editarVenta(event){
+    this.venta = event;
     this.showAdd = false;
     this.showEdit = true;
     this.showList = false;
@@ -47,6 +54,12 @@ export class VentaComponent implements OnInit {
   }
   
   borrarVenta(event){
+    if(this.restClient.deleteVenta(this.venta))
+      alert("Se borró la venta");
+    else
+      alert("No se ha podico borrar la venta");
+
+    this.venta = event;
     this.showAdd = false;
     this.showEdit = false;
     this.showList = true;

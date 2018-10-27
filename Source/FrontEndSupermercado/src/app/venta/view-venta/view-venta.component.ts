@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Venta } from '../../modelo/venta';
+import * as jsPDF from 'jspdf'; 
+import html2canvas from 'html2canvas'; 
 
 @Component({
   selector: 'app-view-venta',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewVentaComponent implements OnInit {
 
+  @Input() venta: Venta;
+
   constructor() { }
 
   ngOnInit() {
+  
   }
+
+  
+
+ getTotal(){
+  let t = 0;
+  for(let d of this.venta.detalles){
+    t += d.producto.valor * d.cantidad;
+  }
+
+  return t;
+}
 
 }

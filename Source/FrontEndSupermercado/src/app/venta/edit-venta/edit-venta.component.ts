@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Venta } from '../../modelo/venta';
 
 @Component({
   selector: 'app-edit-venta',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditVentaComponent implements OnInit {
 
+  @Input() venta: Venta;
+  
   constructor() { }
 
   ngOnInit() {
+    alert(this.venta.cliente);
   }
 
 }

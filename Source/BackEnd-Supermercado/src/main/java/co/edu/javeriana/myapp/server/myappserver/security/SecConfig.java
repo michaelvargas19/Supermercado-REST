@@ -45,7 +45,7 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint(authenticationEntryPoint)
 			.and()
 				.authorizeRequests()
-					.antMatchers("/usuario/**","/login/**","/venta/**","/producto/**").permitAll()
+					.antMatchers("/usuario/**","/login/**","/venta/**","/producto/**","/detalle/**").permitAll()
 					.anyRequest().authenticated()
 			.and()
 				.formLogin()

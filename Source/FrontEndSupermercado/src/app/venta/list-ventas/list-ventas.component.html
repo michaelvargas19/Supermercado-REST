@@ -1,10 +1,34 @@
 <h1>Historial de Ventas</h1>
 
-<form>
-  
-  <button type="button" (click)="ver()" id="ver">Ver Venta</button>
-  <button type="button" (click)="editar()" id="editar">Editar</button>
-  <button type="button" (click)="borrar()" id="borrar">Borrar</button>
-  
+<div class="seleccionados">  
+    
+    <table >
+        <tr>
+          <th>Cliente</th>
+          <th>Fecha</th> 
+          <th>Total</th> 
+          <th>Factura</th>
+          
+        </tr>
 
-</form>
+        <tr *ngFor="let v of ventas" >
+            <td>{{v.cliente}}</td>
+            <td>{{getFecha(v.fecha)}}</td>
+            <td>{{v.total}}</td>
+            <td>
+                <a [routerLink]="['/facturas/view-factura',v.id]" 
+                routerLinkActive='router-link-active'>Ver</a>
+            </td>
+            <td>
+              <button type="button" (click)="ver(v)" id="ver">Ver</button>
+            </td>
+            <td>
+              <button type="button" (click)="borrar(v)" id="borrar">Borrar</button>
+            </td>
+            
+        </tr>
+        
+    </table>
+    <br>
+    <br>
+</div>

@@ -1,0 +1,10 @@
+.selector{
+    width: auto;
+    float: left;
+}
+
+.seleccionados{
+    width: 40%;
+    float: left;
+    margin-left: 50px;
+}

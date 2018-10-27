@@ -1,10 +1,58 @@
 <h1>Agregar Venta</h1>
 
+
 <form (ngSubmit)="addVenta()">
-    
-  <button type="submit" id="addVenta">Agregar Venta</button>
+
+  <div>
+      <label for="cliente">Cliente:</label>
+      <input type="text" name="cliente" id="cliente" [(ngModel)]="venta.cliente" >
+  </div>
+  <br><br><br>
+  
+  <div class="selector">
+    <app-seleccion-productos (onProductSelected)="onProductSelected($event)"
+                           (onProductDisSelected)="onProductDisSelected($event)"  
+                            *ngIf="showSelecter" ></app-seleccion-productos>
+  </div>
 
 
-  <app-seleccion-productos (onProductSelected)="onProductSelected($event)" *ngIf="showSelecter" ></app-seleccion-productos>
+  
+  
+  <div class="seleccionados">  
+      <h2>Productos Seleccionados:</h2>
+      <table >
+          <tr>
+            <th>Producto</th>
+            <th>Valor</th> 
+            <th>Descuento</th> 
+            <th>Cantidad</th>
+            <th>SubTotal</th>
+          </tr>
 
+          <tr *ngFor="let d of detalles" >
+            <td>{{d.producto.nombre}}</td>
+            <td>{{d.producto.valor}}</td> 
+            <td>{{d.producto.descuento}}%</td> 
+            <td> 
+              <input type="number"  name="id" id="id" [(ngModel)]="d.cantidad">
+            </td> 
+            <td>{{getSubTotal(d.cantidad, d.producto.valor)}}</td> 
+            
+          </tr>
+          
+      </table>
+      <br>
+      <br>
+          <label for="total">Total</label>
+          <output type="number" name="total" id="total" >{{getTotal()}}</output>
+      <br>
+      <br>
+
+      <button type="button" (click)="addVenta()" id="addVenta">Agregar Venta</button>
+  </div>
+        
+      
+  
+
+  
 </form>

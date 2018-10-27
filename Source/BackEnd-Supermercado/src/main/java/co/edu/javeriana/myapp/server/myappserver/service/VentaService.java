@@ -24,7 +24,7 @@ public class VentaService {
 
 	@Autowired
 	private VentaRepository repositoryVenta;
-	
+		
 	@Autowired
 	private DetalleRepository repositoryDetalle;
 	
@@ -47,10 +47,20 @@ public class VentaService {
 		if(v.getDetalles() != null) {
 			for (Detalle d : v.getDetalles()) {
 				d.setVenta(v);
-				//d.setProducto( (repositoryProducto.findById(d.getProducto().getId())).get() );
 				repositoryDetalle.save(d);
 			}
 		}
 		return auxVenta;
     }
+	
+	
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		/*for (Detalle d : v.getDetalles()) {
+			repositoryDetalle.delete(d);
+		}*/
+		repositoryVenta.deleteById(id);
+	}
+	
 }
