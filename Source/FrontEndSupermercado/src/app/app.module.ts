@@ -28,6 +28,9 @@ import * as jspdf from 'jspdf';
  
 
 import { ViewFacturaComponent } from './facturas/view-factura/view-factura.component';
+import { EditProductoComponent } from './productos/edit-producto/edit-producto.component';
+import { ListProductosComponent } from './productos/list-productos/list-productos.component';
+import { ViewProductoComponent } from './productos/view-producto/view-producto.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { ViewFacturaComponent } from './facturas/view-factura/view-factura.compo
     ListVentasComponent,
     EditVentaComponent,
     ViewVentaComponent,
-    ViewFacturaComponent
+    ViewFacturaComponent,
+    EditProductoComponent,
+    ListProductosComponent,
+    ViewProductoComponent
 
   ],
   imports: [

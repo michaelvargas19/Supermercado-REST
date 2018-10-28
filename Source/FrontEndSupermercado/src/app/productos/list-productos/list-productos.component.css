@@ -5,11 +5,10 @@
 	margin-top:5px;
 }
 .fondo1{
-	background:#2B2B2E;
+	background:#FFF;
 	opacity:0.8;
 	margin-top:25px;
-	margin-right:33%;
-	margin-left:33%;
+
 	border-radius:8px;
 }
 .fondo2{
@@ -24,4 +23,12 @@
 	color:#FFF;
 	font-family: 'Patua One', cursive;
 	font-size:24px	
+}
+table{
+    background:#2B2B2E;
+    
+	margin-top:25px;
+    color:#FFF;
+    border-radius:8px;
+    padding: 20px;
 }

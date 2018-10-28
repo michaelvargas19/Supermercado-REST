@@ -10,6 +10,13 @@ import { Producto } from '../modelo/producto';
 export class ProductosComponent implements OnInit {
 
   producto : Producto;
+  productos : Producto[] = [];
+
+  showAdd = false;
+  showEdit = false;
+  showList = true;
+  showView = false;
+  showSelections = false;
 
   constructor(private restClient: ProductoService) { }
 
@@ -17,56 +24,62 @@ export class ProductosComponent implements OnInit {
       this.producto = new Producto();
   }
 
-  addProducto(){
-    
-    this.producto.nombre = "Manzana Verde";
-    this.producto.sku = "FRUT-MANZ-VE-1"
-    this.producto.uniMedida = "unidad";
-    this.producto.valor = 2000;
-    this.producto.descuento = 0;
+  
 
-        if(this.restClient.addProducto(this.producto)){
-          this.producto = new Producto();
-        }else{
-          alert("Ha ocurrido un error");
-        }
+  //----------------------------------------
 
-    this.producto.nombre = "Manzana Roja";
-    this.producto.sku = "FRUT-MANZ-RO-2"
-    this.producto.uniMedida = "unidad";
-    this.producto.valor = 2000;
-    this.producto.descuento = 0;
+  agregarProducto(){
+    this.showAdd = true;
+    this.showEdit = false;
+    this.showList = false;
+    this.showView = false;
+  }
 
-        if(this.restClient.addProducto(this.producto)){
-          this.producto = new Producto();
-        }else{
-          alert("Ha ocurrido un error");
-        }
+  listaProductos(event){
+    this.showAdd = false;
+    this.showEdit = false;
+    this.showList = true;
+    this.showView = false;
+    this.refreshProducts();
+  }
 
-    this.producto.nombre = "Banano Tradicional";
-    this.producto.sku = "FRUT-BANA-TR-1"
-    this.producto.uniMedida = "unidad";
-    this.producto.valor = 500;
-    this.producto.descuento = 0;
+  verProducto(event){
+    this.producto = event;
+    this.showAdd = false;
+    this.showEdit = false;
+    this.showList = false;
+    this.showView = true;
+  }
 
-        if(this.restClient.addProducto(this.producto)){
-          this.producto = new Producto();
-        }else{
-          alert("Ha ocurrido un error");
-        }
+  editarProducto(event){
+    this.producto = event;
+    this.showAdd = false;
+    this.showEdit = true;
+    this.showList = false;
+    this.showView = false;
+  }
+  
+  borrarProducto(event){
+    this.producto = event;
+    if(this.restClient.deleteProducto(this.producto))
+      alert("Se borró el producto");
+    else
+      alert("No se ha podico borrar la venta");
 
-    this.producto.nombre = "Banano Bocadillo";
-    this.producto.sku = "FRUT-BANA-BO-2"
-    this.producto.uniMedida = "unidad";
-    this.producto.valor = 500;
-    this.producto.descuento = 0;
-    
-        if(this.restClient.addProducto(this.producto)){
-          this.producto = new Producto();
-        }else{
-          alert("Ha ocurrido un error");
-        }
-   
+    this.producto = event;
+    this.showAdd = false;
+    this.showEdit = false;
+    this.showList = true;
+    this.showView = false;
+  }
+
+  refreshProducts(){
+    this.productos = [];
+    this.restClient.findAll().subscribe(datos => {
+      this.productos = datos; 
+      },
+      error => {     alert("error");
+    });
   }
 
 }

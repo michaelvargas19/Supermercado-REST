@@ -22,17 +22,43 @@ export class ProductoService {
       );
   }
 
+  editProducto(producto: Producto){
+    
+    return this.http.post('http://localhost:8080/producto/edit', producto)
+      .subscribe(
+        res => {
+          return true;
+        },
+        err => {
+          return false;
+        }
+      );
+  }
+
   findProductById (id: number): Observable <Producto>{
     
     return this.http.get<Producto>('http://localhost:8080/producto/'+id,
     {withCredentials: true});
   } 
 
-//-----------------------------------------
-findAll(): Observable<Producto[]> {
-  return this.http.get<Producto[]>('http://localhost:8080/producto');
-}
-//-----------------------------------------
+  //-----------------------------------------
+  findAll(): Observable<Producto[]> {
+    return this.http.get<Producto[]>('http://localhost:8080/producto');
+  }
+  //-----------------------------------------
+
+  deleteProducto(producto: Producto){
+      
+    return this.http.post('http://localhost:8080/producto/delete/'+producto.id,{withCredentials: true})
+      .subscribe(
+        res => {
+          return true;
+        },
+        err => {
+          return false;
+        }
+      )   ;
+  }
 
 }
 

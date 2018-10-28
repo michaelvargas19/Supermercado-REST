@@ -10,7 +10,7 @@ export class UsuarioService {
 
   addUsuario(usuario: Usuario){
     
-    return this.http.post('http://localhost:8080/usuario/add', usuario)
+    return this.http.post('http://localhost:8080/usuario/add', usuario, {withCredentials: true})
       .subscribe(
         res => {
           return true;

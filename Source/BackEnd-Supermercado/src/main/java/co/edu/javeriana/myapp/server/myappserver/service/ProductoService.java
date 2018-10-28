@@ -1,6 +1,7 @@
 package co.edu.javeriana.myapp.server.myappserver.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,4 +38,18 @@ public class ProductoService {
 		
 		return repository.save(p);
     }
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public Producto edit(@RequestBody Producto p) {
+
+		return repository.save(p);
+    }
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public void delete(@PathVariable("id") Long id) {
+		/*for (Detalle d : v.getDetalles()) {
+			repositoryDetalle.delete(d);
+		}*/
+		repository.deleteById(id);
+	}
 }

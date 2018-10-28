@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { VentaService } from '../servicios/venta.service';
 import { Venta } from '../modelo/venta';
 
@@ -16,6 +16,8 @@ export class VentaComponent implements OnInit {
   showSelections = false;
 
   venta: Venta;
+
+  
 
   constructor(private restClient: VentaService) { }
 

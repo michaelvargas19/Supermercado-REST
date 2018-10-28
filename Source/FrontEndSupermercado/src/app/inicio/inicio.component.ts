@@ -6,15 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-
-  registro = true;
+  showLogin = true;
+  showRegistro = true;
   constructor() { }
 
   ngOnInit() {
   }
 
-  registrar(){
-    this.registro = !this.registro;
+  onRegistro(){
+    this.showLogin = false;
+    this.showRegistro = !this.showRegistro;
   }
+
+  onLogin(event){
+    //this.showLogin = !event;
+  }
+
 
 }

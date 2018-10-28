@@ -1,5 +1,5 @@
 import { UsuarioService } from './../servicios/usuario.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  user = 'user';
-  password = 'password';
+  user = 'michael';
+  password = '1234';
 
+  showLogin = true;
+  showLogout = false;
+
+  @Output() onLogin = new EventEmitter<Boolean>();
+  @Output() onRegistro = new EventEmitter<Boolean>();
   result: any;
 
   message: any;
@@ -26,9 +31,13 @@ export class LoginComponent implements OnInit {
     console.log(this.user + ' - ' + this.password);
     this.restClient.login(this.user, this.password).subscribe(data => {
       this.message = 'Login Ok';
+      this.showLogin = false;
+      this.showLogout = true;
+      this.onLogin.emit(true);
     }, error => {
       console.error(error);
       this.message = JSON.stringify(error);
+      this.onLogin.emit(false);
     });
   }
 
@@ -60,13 +69,17 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.restClient.logout().subscribe(data => {
-      this.message = 'Logout Ok';
+      alert("Sesión Finalizada");
+      this.showLogin = true;
+      this.showLogout = false;
     }, error => {
       console.error(error);
       this.message = JSON.stringify(error);
     });
   }
 
-  
+  registrar(){
+    this.onRegistro.emit(true);
+  }  
 
 }

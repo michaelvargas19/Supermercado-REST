@@ -1,19 +1,38 @@
-<h1>Registro</h1>
 
-<form (ngSubmit)="registrar()">
-    
-    <label for="usuario">Nombre:</label>
-    <input type="text" name="usuario" id="usuario" [(ngModel)]="usuario.nombre" >
-    <br>
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" name="contrasena" id="contrasena" [(ngModel)]="usuario.contrasena  " >
-    <br>
-    <label for="rol">Rol:</label>
-    <select name="rol" id = "rol" [(ngModel)]="usuario.rol">
-        <option value="Cajero">Cajero</option>
-        <option value="Bodeguero">Bodeguero</option>
-    </select>
 
-  <button type="submit" id="login">Registrar</button>
-
-</form>
+<div class="text-center fondo1">
+    <form id="regisVete" (ngSubmit)="registrar()">
+      <div class="row d-flex justify-content-center mb-0">
+        <label class="tituloForm mb-0 mt-3">Registro</label>
+      </div>
+      <!--Fila 1 Datos Principales-->
+      <div class="row form-group d-flex justify-content-center">
+        <!--Campo Nombre-->
+        <div class="col-5 p-0 campo">
+          <label class="letraForm">Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="nombre" placeholder="Nombre">
+        </div>
+        <!--Fin Campo Nombre-->
+      </div>
+      <div class="row form-group d-flex justify-content-center">
+        <!--Campo Contraseña-->
+        <div class="col-5 p-0 campo">
+          <label class="letraForm">Contraseña</label>
+          <input type="password" class="form-control" [(ngModel)]="usuario.contrasena" name="contrasena" placeholder="Contraseña">
+        </div>
+        <!--Fin Campo Contraseña-->
+      </div>
+      <div class="row form-group d-flex justify-content-center">
+        <div class="col-5 p-0 campo">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control" [(ngModel)]="usuario.rol" name="rol">
+            <option value="Cajero" selected>Cajero</option>
+            <option value="Bodegero">Bodegero</option>
+            </select>
+        </div>
+      </div>
+      <div class="row form-group d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary mb-3" id="addProducto">Registrarse</button>
+      </div>
+    </form>
+  </div>

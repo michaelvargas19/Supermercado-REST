@@ -1,6 +1,7 @@
 package co.edu.javeriana.myapp.server.myappserver.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,17 +31,20 @@ public class VentaService {
 	
 	@Autowired
 	private ProductoRepository repositoryProducto;
-
+	
+	
 	@RequestMapping("")
 	Iterable<Venta> findAll() {
 		return repositoryVenta.findAll();
 	}
 
+	
 	@RequestMapping("/{id}")
 	Optional<Venta> find(@PathVariable("id") Long id) {
 		return repositoryVenta.findById(id);
 	}
 	
+	@PreAuthorize("hasRole('ROLE_CAJERO')")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public Venta create(@RequestBody Venta v) {
 		Venta auxVenta = repositoryVenta.save(v);
@@ -55,7 +59,8 @@ public class VentaService {
 	
 	
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	@PreAuthorize("hasRole('Cajero')")
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
 	public void delete(@PathVariable("id") Long id) {
 		/*for (Detalle d : v.getDetalles()) {
 			repositoryDetalle.delete(d);

@@ -11,7 +11,7 @@ export class VentaService {
 
   addVenta(venta: Venta){
     
-    return this.http.post('http://localhost:8080/venta/add', venta)
+    return this.http.post('http://localhost:8080/venta/add', venta, {withCredentials: true})
       .subscribe(
         res => {
           return true;
