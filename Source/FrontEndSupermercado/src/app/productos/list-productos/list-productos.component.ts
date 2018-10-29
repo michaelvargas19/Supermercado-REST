@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Producto } from '../../modelo/producto';
 import { ProductoService } from '../../servicios/producto.service';
+import { SeleccionProductosComponent } from '../../seleccion-productos/seleccion-productos.component';
 
 @Component({
   selector: 'app-list-productos',
@@ -32,8 +33,9 @@ export class ListProductosComponent implements OnInit {
   }
 
   borrar(venta){
+    
     this.borrarProducto.emit(venta);
-    //this.refresh();
+    this.refresh();
   }
 
   refresh(){

@@ -8,8 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  user = 'michael';
-  password = '1234';
+  user = '';
+  password = '';
 
   showLogin = true;
   showLogout = false;
@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
       this.showLogin = false;
       this.showLogout = true;
       this.onLogin.emit(true);
+      alert(data);
     }, error => {
-      console.error(error);
+      alert("Usuario o contraseña invalidos");
       this.message = JSON.stringify(error);
       this.onLogin.emit(false);
     });
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
         this.message = JSON.stringify(data);
       },
       error => {
-        console.error(error);
+        
         this.message = JSON.stringify(error);
       }
     );
@@ -73,7 +74,7 @@ export class LoginComponent implements OnInit {
       this.showLogin = true;
       this.showLogout = false;
     }, error => {
-      console.error(error);
+      
       this.message = JSON.stringify(error);
     });
   }

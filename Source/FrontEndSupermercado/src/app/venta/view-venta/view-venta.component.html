@@ -1,56 +1,88 @@
-<h1>Venta N°{{venta.id}}</h1>
+<div class="text-center fondo1">
 
-  <div id="content" > 
+      <div class="d-flex justify-content-center">
+          <h2 class=".tituloForm">Venta N°{{venta.id}}</h2>
+      </div>
 
-    
-    <label for="fecha">Fecha: </label>
-    <output type="text" name="fecha" id="fechaPublicacion" value="{{venta.fecha}}"></output>
-    <br>
-    <label for="cliente">Cliente: </label>
-    <output type="text" name="fecha" id="fechaPublicacion" value="{{venta.cliente}}"></output>
-    <br>
-    <label for="total">Total: </label>
-    <output type="text" name="total" id="total" value="{{venta.total}}"></output>
-    <br>
-    <label for="factura">Factura: </label>
-    <output type="text" name="factura" id="factura" value="Factura">
-          <a [routerLink]="['/facturas/view-factura',venta.id]" 
-          routerLinkActive='router-link-active'>Ver</a>
-    </output>
-    <br>
-    <h2>Detalles</h2>
-    
-    <div>
+      <div id="content" > 
 
-        <table >
-            <tr>
-              <th>Identificador SKU</th>
-              <th>Producto</th>
-              <th>Unidad de Medida</th>
-              <th>Cantidad</th>
-              <th>Valor</th> 
-              <th>Descuento</th> 
-              <th>SubTotal</th>
-            </tr>
-  
-            <tr *ngFor="let d of venta.detalles" >
-              <td>{{d.producto.sku}}</td>
-              <td>{{d.producto.nombre}}</td>
-              <td>{{d.producto.uniMedida}}</td>
-              <td>{{d.cantidad}}</td> 
-              <td>{{d.producto.valor}}</td> 
-              <td>{{d.producto.descuento}}%</td>  
-              <td>{{d.subTotal}}</td> 
-              
-            </tr>
-            
-        </table>
+          <div class="row form-group d-flex justify-content-center">
+              <!--Campo Fecha-->
+              <div class="col-5 p-0 campo">
+                <label class="letraForm">Fecha:</label>
+                <output type="text" class="form-control"  name="fecha" >{{getFecha(venta.fecha)}}</output>
+              </div>
+
+              <!--Campo Cliente-->
+              <div class="col-5 p-0 campo">
+                  <label class="letraForm">Cliente:</label>
+                  <output type="text" class="form-control"  name="cliente" >{{venta.cliente}}</output>
+                </div>
+                <br><br>
+                <br><br>  
+                
+              <!--Campo total-->
+              <div class="col-5 p-0 campo">
+                  <label class="letraForm">Total:</label>
+                  <output type="text" class="form-control"  name="total" >{{venta.total}}</output>
+                </div>
+      
+          </div>
+
+          <div >
+              <label class="letraForm">Factura:</label>
+              <output type="text" name="factura" id="factura" value="Factura">
+                  <a [routerLink]="['/facturas/view-factura',venta.id]" 
+                  routerLinkActive='router-link-active'>Ver</a>
+            </output>
+            </div>
+        
+        
+        
         <br>
-        <label for="total">Total:</label>
-        <output type="number" name="total" id="total" >{{getTotal()}}</output>
+        <h2>Detalles</h2>
+        
+        <div class="d-flex justify-content-center">
+
+            <table >
+                <tr>
+                  <th>Identificador SKU</th>
+                  <th>Producto</th>
+                  <th>Unidad de Medida</th>
+                  <th>Cantidad</th>
+                  <th>Valor</th> 
+                  <th>Descuento</th> 
+                  <th>SubTotal</th>
+                </tr>
+      
+                <tr *ngFor="let d of venta.detalles" >
+                  <td>{{d.producto.sku}}</td>
+                  <td>{{d.producto.nombre}}</td>
+                  <td>{{d.producto.uniMedida}}</td>
+                  <td>{{d.cantidad}}</td> 
+                  <td>{{d.producto.valor}}</td> 
+                  <td>{{d.producto.descuento}}%</td>  
+                  <td>{{d.subTotal}}</td> 
+                  
+                </tr>
+                
+            </table>
+           
+              
+        </div>
+
+      <br>
+      </div>
+    
+
+</div>
+<div class="row form-group d-flex justify-content-center">
+ 
+    <div class="col-5 p-0 campo">
+      <label class="letraForm">Total:</label>
+      <output type="text" class="form-control"  name="total2" >{{getTotal()}}</output>
     </div>
-   <br>
-
-  </div>
+</div>
 
 
+  

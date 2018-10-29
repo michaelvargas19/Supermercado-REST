@@ -11,7 +11,7 @@ export class ProductoService {
 
   addProducto(producto: Producto){
     
-    return this.http.post('http://localhost:8080/producto/add', producto)
+    return this.http.post('http://localhost:8080/producto/add', producto, {withCredentials: true})
       .subscribe(
         res => {
           return true;
@@ -24,7 +24,7 @@ export class ProductoService {
 
   editProducto(producto: Producto){
     
-    return this.http.post('http://localhost:8080/producto/edit', producto)
+    return this.http.post('http://localhost:8080/producto/edit', producto, {withCredentials: true})
       .subscribe(
         res => {
           return true;
@@ -43,10 +43,10 @@ export class ProductoService {
 
   //-----------------------------------------
   findAll(): Observable<Producto[]> {
-    return this.http.get<Producto[]>('http://localhost:8080/producto');
+    return this.http.get<Producto[]>('http://localhost:8080/producto',{withCredentials: true});
   }
   //-----------------------------------------
-
+  /*
   deleteProducto(producto: Producto){
       
     return this.http.post('http://localhost:8080/producto/delete/'+producto.id,{withCredentials: true})
@@ -59,6 +59,19 @@ export class ProductoService {
         }
       )   ;
   }
+  */
+ deleteProducto(producto: Producto){
+      
+  return this.http.post('http://localhost:8080/producto/delete',producto,{withCredentials: true})
+    .subscribe(
+      res => {
+        return true;
+      },
+      err => {
+        return false;
+      }
+    )   ;
+}
 
 }
 

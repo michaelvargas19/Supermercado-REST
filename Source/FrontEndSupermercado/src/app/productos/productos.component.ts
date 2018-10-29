@@ -78,7 +78,7 @@ export class ProductosComponent implements OnInit {
     this.restClient.findAll().subscribe(datos => {
       this.productos = datos; 
       },
-      error => {     alert("error");
+      error => {     
     });
   }
 

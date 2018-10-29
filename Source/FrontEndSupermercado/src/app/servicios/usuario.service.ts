@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Usuario } from '../modelo/usuario';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -56,5 +57,10 @@ export class UsuarioService {
       withCredentials: true
     });
   }
+
+  findUserById (id: number): Observable <Usuario>{
+    return this.http.get<Usuario>('http://localhost:8080/usuario/'+id,
+    {withCredentials: true});
+  } 
 
 }

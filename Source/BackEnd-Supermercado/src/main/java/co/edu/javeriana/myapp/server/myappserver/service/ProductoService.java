@@ -23,33 +23,42 @@ public class ProductoService {
 	@Autowired
 	private ProductoRepository repository;
 
+	
 	@RequestMapping("")
 	Iterable<Producto> findAll() {
 		return repository.findAll();
 	}
 
+	
 	@RequestMapping("/{id}")
 	Optional<Producto> find(@PathVariable("id") Long id) {
 		return repository.findById(id);
 	}
 	
+	@PreAuthorize("hasRole('ROLE_BODEGERO')")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public Producto create(@RequestBody Producto p) {
 		
 		return repository.save(p);
     }
 	
+	@PreAuthorize("hasRole('ROLE_BODEGERO')")
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public Producto edit(@RequestBody Producto p) {
 
 		return repository.save(p);
     }
 	
+	/*@PreAuthorize("hasRole('ROLE_BODEGERO')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
 	public void delete(@PathVariable("id") Long id) {
-		/*for (Detalle d : v.getDetalles()) {
-			repositoryDetalle.delete(d);
-		}*/
+		
 		repository.deleteById(id);
+	}*/
+	@PreAuthorize("hasRole('ROLE_BODEGERO')")
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public void delete(@RequestBody Producto p) {
+		
+		repository.delete(p);
 	}
-}
+}	

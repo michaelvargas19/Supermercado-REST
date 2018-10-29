@@ -32,13 +32,13 @@ public class VentaService {
 	@Autowired
 	private ProductoRepository repositoryProducto;
 	
-	
+	@PreAuthorize("hasRole('ROLE_CAJERO')")
 	@RequestMapping("")
 	Iterable<Venta> findAll() {
 		return repositoryVenta.findAll();
 	}
 
-	
+	@PreAuthorize("hasRole('ROLE_CAJERO')")
 	@RequestMapping("/{id}")
 	Optional<Venta> find(@PathVariable("id") Long id) {
 		return repositoryVenta.findById(id);
@@ -59,7 +59,7 @@ public class VentaService {
 	
 	
 
-	@PreAuthorize("hasRole('Cajero')")
+	@PreAuthorize("hasRole('ROLE_CAJERO')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
 	public void delete(@PathVariable("id") Long id) {
 		/*for (Detalle d : v.getDetalles()) {

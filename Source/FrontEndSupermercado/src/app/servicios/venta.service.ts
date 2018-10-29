@@ -24,9 +24,10 @@ export class VentaService {
 
   deleteVenta(venta: Venta){
     
-    return this.http.delete('http://localhost:8080/venta/delete/'+venta.id,{withCredentials: true})
+    return this.http.post('http://localhost:8080/venta/delete/'+venta.id,{withCredentials: true})
       .subscribe(
         res => {
+          alert(venta.id);
           return true;
         },
         err => {
@@ -36,7 +37,7 @@ export class VentaService {
   }
 
   findAll(): Observable<Venta[]> {
-    return this.http.get<Venta[]>('http://localhost:8080/venta');
+    return this.http.get<Venta[]>('http://localhost:8080/venta',{withCredentials: true});
   }
 
   findVentaById (id: number): Observable <Venta>{

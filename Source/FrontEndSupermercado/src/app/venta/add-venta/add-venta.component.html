@@ -1,12 +1,20 @@
-<h1>Agregar Venta</h1>
-
-
 <form (ngSubmit)="addVenta()">
 
-  <div>
-      <label for="cliente">Cliente:</label>
-      <input type="text" name="cliente" id="cliente" [(ngModel)]="venta.cliente" >
+  <div class="d-flex justify-content-center">
+      <h2 class=".tituloForm">Agregar Venta</h2>
   </div>
+
+  <div class="text-center fondo1">
+  <div class="row form-group d-flex justify-content-center">
+    <div class="campo">
+        <label for="cliente" class="letraForm">Cliente:</label>
+        <input type="text" class="form-control" name="cliente" id="cliente" [(ngModel)]="venta.cliente" >
+      </div>
+  </div>
+</div>
+
+  
+  
   <br><br><br>
   
   <div class="selector">
@@ -48,11 +56,8 @@
       <br>
       <br>
 
-      <button type="button" (click)="addVenta()" id="addVenta">Agregar Venta</button>
+      <button type="button" class="btn btn-primary mb-3" (click)="addVenta()" id="addVenta">Agregar Venta</button>
   </div>
         
-      
-  
-
-  
+        
 </form>

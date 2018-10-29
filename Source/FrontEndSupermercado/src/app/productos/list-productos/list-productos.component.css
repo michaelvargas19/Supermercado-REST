@@ -4,17 +4,11 @@
 	color:#FFF;
 	margin-top:5px;
 }
-.fondo1{
-	background:#FFF;
-	opacity:0.8;
-	margin-top:25px;
 
-	border-radius:8px;
-}
 .fondo2{
 	background:#2B2B2E;
 	opacity:1;
-	margin-bottom:350px;
+	margin-bottom:150px;
 }
 .campo{
 	margin: 0px 10px 0px 10px;	
@@ -26,9 +20,11 @@
 }
 table{
     background:#2B2B2E;
-    
-	margin-top:25px;
     color:#FFF;
     border-radius:8px;
     padding: 20px;
+}
+
+td{
+	margin-left: 5px;
 }
